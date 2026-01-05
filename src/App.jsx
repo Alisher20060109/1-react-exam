@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Layout from './components/Layout';
 import { Routes, Route } from 'react-router-dom';
+import Cart from './pages/cart/Cart';
 const HomePage = React.lazy(() => import('./pages/Home/HomePage'));
 const MenyuPage = React.lazy(() => import('./pages/Menyu/MenyuPage'));
 
@@ -12,6 +13,7 @@ const App = () => {
         <Route element={<Layout/>}>
           <Route path="/" element={<HomePage />} />
           <Route path="/menyu" element={<MenyuPage />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>
