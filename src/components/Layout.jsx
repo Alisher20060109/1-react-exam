@@ -2,13 +2,13 @@ import React from 'react'
 import HeaderMemo from './Header'
 import FooterMemo from './Foters'
 import { Outlet } from 'react-router-dom'
-import { LanguageProvider } from '../context/LanguageContext' // yo'lni tekshiring
+import { LanguageProvider } from '../context/LanguageContext' 
 
 const Layout = () => {
   return (
     <LanguageProvider> 
       <HeaderMemo />
-      <main className="pt-32"> {/* Header fixed bo'lsa kontent ostida qolmasligi uchun */}
+      <main className="pt-32">
         <Outlet />
       </main>
       <FooterMemo />

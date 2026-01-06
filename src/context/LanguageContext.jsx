@@ -1,10 +1,9 @@
 import React, { createContext, useState, useContext } from 'react';
-import languages from '../translation/languages'; // yo'lni tekshiring
-
+import languages from '../translation/languages'; 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [lang, setLang] = useState('uz'); // Boshlang'ich til
+  const [lang, setLang] = useState('uz'); 
 
   const value = {
     lang,

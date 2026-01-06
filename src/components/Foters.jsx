@@ -2,10 +2,10 @@ import React, { memo } from "react";
 import { CiPizza } from "react-icons/ci";
 import { FiPhone, FiMapPin } from "react-icons/fi";
 import { AiOutlineFacebook, AiOutlineInstagram } from "react-icons/ai";
-import { useLanguage } from "../context/LanguageContext"; // Context'ni chaqiramiz
+import { useLanguage } from "../context/LanguageContext"; 
 
 const Footer = () => {
-  // Global tarjima obyektini olamiz
+  
   const { t } = useLanguage();
 
   return (

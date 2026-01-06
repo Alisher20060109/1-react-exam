@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { CiLocationOn } from "react-icons/ci";
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
@@ -14,7 +14,6 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 🔹 DATA FETCH
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -64,7 +63,6 @@ const HomePage = () => {
 
   return (
     <section className="container mx-auto py-8 px-4 mt-2">
-      {/* ================== CATEGORY SCROLL ================== */}
       <div className="flex gap-4 mb-12 overflow-x-auto flex-nowrap md:flex-wrap md:overflow-visible px-2">
         {categories.map((el) => (
           <div
@@ -96,7 +94,6 @@ const HomePage = () => {
         ))}
       </div>
 
-      {/* ================== PRODUCTS SWIPER ================== */}
       <div className="relative">
         <Swiper
           modules={[Navigation]}
@@ -114,15 +111,12 @@ const HomePage = () => {
           {filteredProducts.map((el) => (
             <SwiperSlide key={el.id}>
               <div className="bg-white rounded-3xl p-4 shadow-md border border-gray-200 h-full flex flex-col relative hover:shadow-lg transition-shadow duration-300">
-                
-                {/* 🔖 Discount */}
                 {el.discount && (
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
                     -{el.discount}%
                   </div>
                 )}
 
-                {/* 🖼 Image */}
                 <div className="h-44 flex items-center justify-center mb-3">
                   <img
                     src={el.image}
@@ -130,37 +124,46 @@ const HomePage = () => {
                     className="max-h-full object-contain transition-transform duration-300 hover:scale-105"
                   />
                 </div>
-
-                {/* 📄 Title */}
                 <h3 className="text-sm font-semibold text-gray-900 leading-tight mb-2 overflow-hidden text-ellipsis whitespace-nowrap">
                   {el.title}
                 </h3>
-
-                {/* 💰 Price */}
-                <div className="mt-auto flex items-center gap-2">
-                  <span className="text-red-600 text-xl font-bold">
-                    {el.price} ₽
-                  </span>
-                  {el.oldPrice && (
-                    <span className="text-gray-400 line-through text-base">
-                      {el.oldPrice}
-                    </span>
-                  )}
-                </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+
+        <div className="mt-10">
+          <div className="flex flex-col justify-center w-full bg-gray-400 p-10 rounded-2xl md:flex-row items-stretch md:items-center gap-4 md:gap-6 mb-8">
+            <h1 className="text-xl font-bold text-white">Проверить адрес доставки</h1>
+            <div className="flex-1 flex items-center bg-gray-50 rounded-xl w-full px-4 py-4 border-2 border-gray-200 focus-within:border-orange-400 transition-colors">
+              <span><CiLocationOn /></span>
+              <input
+              
+                type="text"
+                placeholder="Адрес"
+                
+                className="flex-1 bg-transparent outline-none  text-gray-700 placeholder-gray-400 text-base"
+              />
+              <button className="bg-orange-500 cursor-pointer hover:bg-orange-600 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-lg shadow-md transition duration-200 ml-4">
+                Проверить
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* ================== EMPTY STATE ================== */}
+      <section>
+        <div>
+          
+        </div>
+      </section>
+
       {filteredProducts.length === 0 && (
         <div className="text-center py-20 text-gray-400">
           Bu kategoriya bo'yicha mahsulotlar topilmadi.
         </div>
       )}
 
-      {/* ================== SWIPER NAVIGATION STYLE ================== */}
       <style>{`
         .product-swiper .swiper-button-next,
         .product-swiper .swiper-button-prev {
